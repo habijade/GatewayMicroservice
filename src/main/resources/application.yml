@@ -1,0 +1,27 @@
+server:
+  port: 8080 # Port sur lequel le gateway ecoutera les requetes
+spring:
+  #application:
+  #name: GatewayMicroservice # Nom de l'application
+  cloud:
+    discovery:
+      enabled: true
+    gateway:
+      routes:
+        - id: patient
+          uri: http://localhost:8081
+          predicates:
+            - Path=/patient/**
+        - id: note
+          uri: http://localhost:8083
+          predicates:
+            - Path=/note/**
+
+
+
+
+
+
+
+
+
